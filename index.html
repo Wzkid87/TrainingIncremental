@@ -1,0 +1,25 @@
+<html>
+  <header>
+    <script type="text/javascript" src="github.com/Wzkid87/TrainingIncremental/main.js"> </script>
+  </header>
+  <body>
+    <div id="clock">
+      <button id="advance"> Advance </button> <span id="time"> Year 1, Week 1 </span>
+    </div>
+    <div id="stats">
+      Fitness: <span id="fitness">0</span>
+      Fatigue: <span id="fatigue">0</span>
+    </div>
+    <div id="workoutBuilder">
+      Number of Workouts: <input type="number" id="numWorkouts" size=2 defualtValue="1" min="1"></input>
+      <button id="selectNumWorkouts">Ok</button>
+      <div class="workout">
+        <div class="duration">
+          Duration: <input id="durationInput" type="range" min="0" max="100"> <span id="durationTime">0 Hours</span></input>
+        </div>
+        <div class="intensity">
+          Intensity: <input id="intensityInput" type="range" min="0" max="100"> <span id="intensityScale">100%</span>
+        </div>
+      </div>
+    </body>
+</html>
