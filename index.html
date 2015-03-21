@@ -12,15 +12,15 @@
       Fatigue: <span id="fatigue">0</span>
     </div>
     <div id="workoutBuilder">
-      Number of Workouts: <input type="number" id="numWorkouts" size=2 defualtValue="1" min="1"></input>
-      <button id="selectNumWorkouts">Ok</button>
+      <!-- Number of Workouts: <input type="number" id="numWorkouts" size=2 defualtValue="1" min="1"></input>
+      <button id="selectNumWorkouts">Ok</button> -->
       <div class="workout">
-        <div class="duration">
-          Duration: <input id="durationInput" type="range" min="0" max="100"> <span id="durationTime">0 Hours</span></input>
-        </div>
-        <div class="intensity">
-          Intensity: <input id="intensityInput" type="range" min="0" max="100"> <span id="intensityScale">100%</span>
-        </div>
+        <div form="duration">
+          Duration: <input id="durationInput" name="durationInput" type="range" min="0" max="100"></input> <output id="durationTime" name="durationTime">0</output> Hours
+        </form>
+        <div form="intensity">
+          Intensity: <input id="intensityInput" name="intensityInput" type="range" min="0" max="100"></input> <output id="intensityScale" name="intensityScale">100</output>%
+        </form>
       </div>
     </body>
 </html>
