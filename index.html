@@ -15,10 +15,10 @@
       <!-- Number of Workouts: <input type="number" id="numWorkouts" size=2 defualtValue="1" min="1"></input>
       <button id="selectNumWorkouts">Ok</button> -->
       <div class="workout">
-        <div form="duration">
-          Duration: <input id="durationInput" name="durationInput" type="range" min="0" max="100"></input> <output id="durationTime" name="durationTime">0</output> Hours
+        <form id="duration" oninput="durationTime.value=durationInput.value">
+          Duration: <input id="durationInput" name="durationInput" type="range" min="0" max="3" step="0.1"></input> <output id="durationTime" name="durationTime">0</output> Hours
         </form>
-        <div form="intensity">
+        <form id="intensity" oninput="intensityScale.value=intensityInput.value">
           Intensity: <input id="intensityInput" name="intensityInput" type="range" min="0" max="100"></input> <output id="intensityScale" name="intensityScale">100</output>%
         </form>
       </div>
