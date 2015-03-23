@@ -17,13 +17,13 @@ var Game = {
     
     this.cacheWorkout();
     
-  	var latestWorkout = this.workoutHistory[this.workoutHistory.length-1];
-	
-	  this.fitness = this.calcCurrentFitness(latestWorkout.currentFitness, latestWorkout.duration, latestWorkout.intensity, latestWorkout.currentFatigue);
+    var latestWorkout = this.workoutHistory[this.workoutHistory.length-1];
+    
+    this.fitness = this.calcCurrentFitness(latestWorkout.currentFitness, latestWorkout.duration, latestWorkout.intensity, latestWorkout.currentFatigue);
     this.fatigue = this.calcCurrentFatigue(latestWorkout.currentFitness, latestWorkout.duration, latestWorkout.intensity);
 
     $('#fitness').text(this.fitness);
-  	$('#fatigue').text(this.fatigue);
+    $('#fatigue').text(this.fatigue);
   },
   
   parseTime: function(time) {
@@ -54,20 +54,11 @@ var Game = {
   },
   
   cacheWorkout: function() {
-    var self = this;
-    
-    var _workout = {
-      ID: this.workoutID,
-      currentTime: this.time,
-      currentFitness: this.fitness,
-      currentFatigue: this.fatigue,
-       duration: $('#durationInput').value,
-      intensity: $('#intensityInput').value,
-    };
+    var _workout = new Workout();
     
     this.workoutID++;
     
-    self.workoutHistory.push(_workout);
+    this.workoutHistory.push(_workout);
   },
   
   init: function() {
@@ -86,5 +77,13 @@ var Game = {
   },
 };
 
+var Workout = function() {
+	this.ID = Game.workoutID;
+	this.currentTime = Game.time;
+	this.currentFitness = Game.fitness;
+	this.currentFatigue = Game.fatigue;
+	this.duration = $('#durationInput').value;
+	this.intensity = $('#intensityInput').value;
+};
 
 Game.init();
