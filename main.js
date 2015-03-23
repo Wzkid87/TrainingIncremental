@@ -15,6 +15,7 @@ var Game = {
     this.time++;
     this.timeDisplay.text(this.parseTime(this.time));    
     
+    this.cacheWorkout();
   },
   
   parseTime: function(time) {
@@ -33,11 +34,23 @@ var Game = {
     return currentFatigue;
   },
   
+  calcCurrentFitness: function(_fitness, _duration, _intensity, _fatigue) {
+    var durBit = Math.sqrt(_duration);
+    var intBit = 0.009 * _intensity + 0.05;
+    var fitBit = Math.exp(0.001 * _fitness);
+    var fatBit = -0.009 * _fatigue + 0.95;
+    
+    var newFitness = durBit * intBit * fitBit * fatBit;
+    
+    return newFitness;
+  },
+  
   cacheWorkout: function() {
     var self = this;
     
     var _workout = {
       ID: this.workoutID,
+      currentTime: this.time,
       currentFitness: this.fitness,
       currentFatigue: this.fatigue,
        duration: $('#durationInput'),
@@ -46,8 +59,7 @@ var Game = {
     
     this.workoutID++;
     
-    var newWorkout = Workout(_workout).init();
-    self.workoutHistory.push(newWorkout);
+    self.workoutHistory.push(_workout);
   },
   
   init: function() {
@@ -61,21 +73,10 @@ var Game = {
       self.advance();
     });
     
-    this.numWorkoutsButton.click(function() {
-      Workout.workoutBuild(document.getElementById("numWorkouts"));
-    });
+
     
   },
 };
 
-var Workout = function(options) {
-  return $.extend({
-        
-    init: function() {
-      var self = this;
-      return this;
-          }
-  }, options)
-};
 
 Game.init();
