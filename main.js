@@ -16,6 +16,14 @@ var Game = {
     this.timeDisplay.text(this.parseTime(this.time));    
     
     this.cacheWorkout();
+    
+  	var latestWorkout = this.workoutHistory(workoutHistory.length-1);
+	
+	  this.fitness = this.calcCurrentFitness(latestWorkout.currentFitness, latestWorkout.duration, latestWorkout.intensity, latestWorkout.currentFatigue);
+    this.fatigue = this.calcCurrentFatigue(latestWorkout.currentFitness, latestWorkout.duration, latestWorkout.intensity);
+
+    $('#fitness').text(this.fitness);
+  	$('#fatigue').text(this.fatigue);
   },
   
   parseTime: function(time) {
@@ -53,8 +61,8 @@ var Game = {
       currentTime: this.time,
       currentFitness: this.fitness,
       currentFatigue: this.fatigue,
-       duration: $('#durationInput'),
-      intensity: $('#intensityInput'),
+       duration: $('#durationInput').value,
+      intensity: $('#intensityInput').value,
     };
     
     this.workoutID++;
