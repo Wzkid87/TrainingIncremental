@@ -17,7 +17,7 @@ var Game = {
     
     this.cacheWorkout();
     
-  	var latestWorkout = this.workoutHistory(this.workoutHistory.length-1);
+  	var latestWorkout = this.workoutHistory[this.workoutHistory.length-1];
 	
 	  this.fitness = this.calcCurrentFitness(latestWorkout.currentFitness, latestWorkout.duration, latestWorkout.intensity, latestWorkout.currentFatigue);
     this.fatigue = this.calcCurrentFatigue(latestWorkout.currentFitness, latestWorkout.duration, latestWorkout.intensity);
