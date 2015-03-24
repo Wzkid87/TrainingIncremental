@@ -23,9 +23,9 @@ var Game = {
     this.fatigue = this.calcCurrentFatigue(latestWorkout.currentFitness, latestWorkout.duration, latestWorkout.intensity);
 
     var _fitText = document.getElementById('fitness');
-    _fitText.text(this.fitness);
+    _fitText.text = this.fitness;
     var _fatText = document.getElementById('fatigue');
-    _fatText.text(this.fatigue);
+    _fatText.text = this.fatigue;
   },
   
   parseTime: function(time) {
