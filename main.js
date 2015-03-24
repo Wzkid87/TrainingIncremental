@@ -22,8 +22,10 @@ var Game = {
     this.fitness = this.calcCurrentFitness(latestWorkout.currentFitness, latestWorkout.duration, latestWorkout.intensity, latestWorkout.currentFatigue);
     this.fatigue = this.calcCurrentFatigue(latestWorkout.currentFitness, latestWorkout.duration, latestWorkout.intensity);
 
-    $('#fitness').text(this.fitness);
-    $('#fatigue').text(this.fatigue);
+    var _fitText = $('#fitness');
+    _fitText.text(this.fitness);
+    var _fatText = $('#fatigue');
+    _fatText.text(this.fatigue);
   },
   
   parseTime: function(time) {
@@ -78,12 +80,14 @@ var Game = {
 };
 
 var Workout = function() {
+	var _durInput = $('#durationInput');
+	var _intInput = $('#intensityInput');
 	this.ID = Game.workoutID;
 	this.currentTime = Game.time;
 	this.currentFitness = Game.fitness;
 	this.currentFatigue = Game.fatigue;
-	this.duration = $('#durationInput').value;
-	this.intensity = $('#intensityInput').value;
+	this.duration = _durInput.value;
+	this.intensity = _intInput.value;
 };
 
 Game.init();
