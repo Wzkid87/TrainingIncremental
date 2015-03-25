@@ -10,6 +10,8 @@ var Game = {
   advanceButton: undefined,
   numWorkoutsButton: undefined,
   timeDisplay: undefined,
+  fatigueDisplay: undefined,
+  fitnessDisplay: undefined,
   
   advance: function() {
     this.time++;
@@ -22,10 +24,8 @@ var Game = {
     this.fitness = this.calcCurrentFitness(latestWorkout.currentFitness, latestWorkout.duration, latestWorkout.intensity, latestWorkout.currentFatigue);
     this.fatigue = this.calcCurrentFatigue(latestWorkout.currentFitness, latestWorkout.duration, latestWorkout.intensity);
 
-    var _fitText = document.getElementById('fitness');
-    _fitText.text = this.fitness;
-    var _fatText = document.getElementById('fatigue');
-    _fatText.text = this.fatigue;
+    this.fitnessDisplay.text(this.fitness);
+    this.fatigueDisplay.text(this.fatigue);
   },
   
   parseTime: function(time) {
@@ -69,6 +69,9 @@ var Game = {
     this.advanceButton = $('#advance');
     this.timeDisplay = $('#time');
     this.numWorkoutsButton = $('#selectNumWorkouts');
+    
+    this.fitnessDisplay = $('#fitness');
+    this.fatigueDisplay = $('#fatigue');
        
     this.advanceButton.click(function() {
       self.advance();
