@@ -13,6 +13,9 @@ var Game = {
   fatigueDisplay: undefined,
   fitnessDisplay: undefined,
   
+  //durInput: undefined,
+  //intInput: undefined,
+  
   advance: function() {
     this.time++;
     this.timeDisplay.text(this.parseTime(this.time));    
